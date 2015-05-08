@@ -1,0 +1,27 @@
+{
+  "name": "nlesc-vega",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "nlesc-vega.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "vega": "~1.5.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.2.3"
+  },
+  "homepage": "https://github.com/nlescwebcomponents/nlesc-vega",
+  "_release": "ad9d07ebdb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ad9d07ebdb9cdd8bd01e44465dc44a4636776fa7"
+  },
+  "_source": "git://github.com/nlescwebcomponents/nlesc-vega.git",
+  "_target": "master",
+  "_originalSource": "nlescwebcomponents/nlesc-vega",
+  "_direct": true
+}

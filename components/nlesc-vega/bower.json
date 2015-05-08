@@ -1,0 +1,17 @@
+{
+  "name": "nlesc-vega",
+  "version": "0.0.1",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "nlesc-vega.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "vega": "~1.5.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.2.3"
+  }
+}
