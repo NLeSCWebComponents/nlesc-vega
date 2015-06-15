@@ -8,6 +8,7 @@
   <script src="../webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="nlesc-vega.html">
 
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 
 <body unresolved>
@@ -16,6 +17,21 @@
   <nlesc-vega specfile="demo/bar.json" id="nlesc1"></nlesc-vega>
   <h3>scatter plot</h3>
   <nlesc-vega specfile="demo/scatter.json" id="nlesc2"></nlesc-vega>
+<script>
+function loadNlescVega(what, where) {
+  $.ajax({
+    url: what,
+    success: function(data) {
+      myData = data;
+      where.spec = myData;
+    }
+  });
+}
+$('document').ready(function(){
+  loadNlescVega('demo/bar.json', $('#nlesc1')[0]);
+  loadNlescVega('demo/scatter.json', $('#nlesc2')[0]);
+});
+</script>
 </body>
 
 </html>
