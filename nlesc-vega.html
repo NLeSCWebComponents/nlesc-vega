@@ -22,6 +22,7 @@ Element providing solution to no problem in particular.
 <polymer-element name="nlesc-vega" attributes="specfile">
   <script>
     function loadSpec(polymerElement, spec) {
+      if(spec=='') { return; }  // Ignore null spec
       vg.parse.spec(spec, function(chart) {
         try {
           polymerElement.view = chart({
@@ -49,7 +50,14 @@ Element providing solution to no problem in particular.
       specChanged: function(oldValue, newValue) {
         loadSpec(this, newValue);
       },
-      ready: function() {
+      loadData: function(newData) {
+        // NOTE: newData must be in the exact same format as data provided in
+        // the original spec. If original spec applies any kind of
+        // transformation, newData must match the format AFTER transformations
+        // have been applied. Have a look at this.view._model._data to see
+        // what the data looks like, if needed.
+        this.spec.data = newData;
+        loadSpec(this, this.spec);
       }
     });
   </script>
