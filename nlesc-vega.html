@@ -70,7 +70,15 @@ Element providing solution to no problem in particular.
         // transformation, newData must match the format AFTER transformations
         // have been applied. Have a look at this.view._model._data to see
         // what the data looks like, if needed.
-        this.spec.data = newData;
+
+        if(this.spec.data.length>1) {
+          // Choropleth data loads 2 data items: the data and the map, but we
+          // only want to change the map. So make sure the data goes first on
+          // the spec file.
+          this.spec.data[0] = newData[0];
+        } else {
+          this.spec.data = newData;
+        }
         loadSpec(this, this.spec);
       }
     });
