@@ -23,6 +23,19 @@ Element providing solution to no problem in particular.
   <script>
     function loadSpec(polymerElement, spec) {
       if(spec=='') { return; }  // Ignore null spec
+
+      // Never load spec as file (otherwise we cannot modify data.)
+      if(vg.isObject(spec)) {
+        loadSpecObject(polymerElement, spec);
+      } else {
+        d3.json(spec, function(error, specObj) {
+          polymerElement.spec = specObj;
+          loadSpecObject(polymerElement, specObj);
+        });
+      }
+    }
+
+    function loadSpecObject(polymerElement, spec) {
       vg.parse.spec(spec, function(chart) {
         try {
           polymerElement.view = chart({
@@ -35,6 +48,7 @@ Element providing solution to no problem in particular.
         }
       });
     }
+
     Polymer({
       /**
        * The `spec` attribute tells where is JSON specification for the plot
@@ -43,7 +57,7 @@ Element providing solution to no problem in particular.
        * @type string
        * @default 'spec.json'
        */
-      specfile: 'spec.json',
+      specfile: '', // 'spec.json',
       specfileChanged: function(oldValue, newValue) {
         loadSpec(this, newValue);
       },
